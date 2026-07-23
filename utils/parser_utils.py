@@ -397,7 +397,7 @@ def load_and_preprocess_data(reduced=True):
     train_examples = parser.create_instances(train_set)
     print("took {:.2f} seconds".format(time.time() - start))
 
-    return parser, embeddings_matrix, train_examples, dev_set, test_set,
+    return parser, embeddings_matrix, train_examples, dev_set, test_set
 
 
 class AverageMeter(object):

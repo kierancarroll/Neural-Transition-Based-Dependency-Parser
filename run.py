@@ -40,23 +40,11 @@ def train(parser, train_data, dev_data, output_path, batch_size=1024, n_epochs=1
     best_dev_UAS = 0
 
 
-    ### YOUR CODE HERE (~2-7 lines)
-    ### TODO:
-    ###      1) Construct Adam Optimizer in variable `optimizer`
-    ###      2) Construct the Cross Entropy Loss Function in variable `loss_func` with `mean`
-    ###         reduction (default)
-    ###
-    ### Hint: Use `parser.model.parameters()` to pass optimizer
-    ###       necessary parameters to tune.
-    ### Please see the following docs for support:
-    ###     Adam Optimizer: https://pytorch.org/docs/stable/optim.html
-    ###     Cross Entropy Loss: https://pytorch.org/docs/stable/nn.html#crossentropyloss
 
     # parser.parameters() or parser.model.parameters()?
     optimizer = optim.Adam(parser.model.parameters())
     loss_func = nn.CrossEntropyLoss()
 
-    ### END YOUR CODE
 
     for epoch in range(n_epochs):
         print("Epoch {:} out of {:}".format(epoch + 1, n_epochs))
@@ -111,7 +99,6 @@ def train_for_epoch(parser, train_data, dev_data, optimizer, loss_func, batch_si
             loss = loss_func(logits, train_y)
             loss.backward()
             optimizer.step()
-
 
             ### END YOUR CODE
             prog.update(1)
